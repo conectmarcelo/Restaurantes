@@ -13,12 +13,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'HomeController@index');
+Route::get('/', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/restaurante/{id}', 'HomeController@get')->name('home.single');
 
 
 Route::group(['middleware' => ['auth']], function(){
     
     Route::prefix('admin')->namespace('Admin')->group(function(){
+        
         Route::prefix('restaurants')->group(function(){
             Route::get('/', 'RestaurantController@index')->name('restaurant.index');
             Route::get('new', 'RestaurantController@new')->name('restaurant.new');
@@ -26,7 +29,8 @@ Route::group(['middleware' => ['auth']], function(){
             Route::get('edit/{restaurant}', 'RestaurantController@edit')->name('restaurant.edit');
             Route::post('update/{restaurant}', 'RestaurantController@update')->name('restaurant.update');
             Route::get('remove/{restaurant}', 'RestaurantController@delete')->name('restaurant.remove');
-        
+            Route::get('/photos/{restaurant}', 'RestaurantPhotoController@index')->name('restaurant.photo');
+            Route::post('/photos/{restaurant}', 'RestaurantPhotoController@save')->name('restaurant.photo.save');
         });
   
         Route::prefix('users')->group(function(){

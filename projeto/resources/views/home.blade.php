@@ -6,8 +6,10 @@
 
    <div class="row">
         @foreach($restaurants as $r)
-            <div class="col-4">
-                <h2>{{$r->name}}</h2>
+            <div class="col-4">z
+                <h2>
+                    <a href="{{route('home.single', ['id'=>$r->id])}}">{{$r->name}}</a>
+                </h2>
                 <p>
                 {{$r->description}}
                 </p>

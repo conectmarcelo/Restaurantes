@@ -23,7 +23,13 @@ class HomeController extends Controller
      */
     public function index()
     {   
-        $restaurants =Restaurant:: paginate(2);
+        $restaurants = Restaurant:: paginate(2);
         return view('home', compact('restaurants'));
     }
+
+    public function get(Restaurant $id)
+    {
+       return view ('single', compact('id'));
+    }
+
 }

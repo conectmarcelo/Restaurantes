@@ -30,7 +30,7 @@
             <td>
                 <a href="{{route('restaurant.edit', ['restaurant'=> $r->id])}}" class="btn btn-primary">Editar</a>
                 <a href="{{route('restaurant.remove', ['restaurant'=> $r->id])}}"class="btn btn-danger">Excluir</a>
-
+                <a href="{{route('restaurant.photo', ['restaurant'=> $r->id])}}" class="btn btn-warning">Fotos</a>
             </td>
            
         </tr>
